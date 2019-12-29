@@ -1,4 +1,5 @@
 execute pathogen#infect()
+set encoding=utf-8
 syntax on
 set hlsearch
 filetype plugin indent on
