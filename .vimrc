@@ -1,6 +1,8 @@
 execute pathogen#infect()
 set encoding=utf-8
 syntax on
+set path+=**
+set wildmenu
 set hlsearch
 filetype plugin indent on
 set background=light
