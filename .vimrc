@@ -3,6 +3,10 @@ set encoding=utf-8
 syntax on
 set number
 
+" whitespace
+autocmd BufWritePre *.rb :%s/\s\+$//e
+set listchars=trail:·
+set list
 
 " file search
 set path+=**
@@ -48,5 +52,17 @@ let g:ale_linters = {
       \  'python': ['pylint'],
       \ }
 
+" vim jsx
+let g:vim_jsx_pretty_highlight_close_tag = 1
+
 " Mappings
 nnoremap ; :
+noremap <Leader>w :call TrimWhitespace()<CR>
+nnoremap <Leader>t :tabnew<CR>
+
+" functions
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun

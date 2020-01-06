@@ -16,3 +16,9 @@
 [submodule "bundle/ale"]
 	path = bundle/ale
 	url = https://github.com/dense-analysis/ale.git
+[submodule "bundle/typescript-vim"]
+	path = bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "bundle/vim-jsx-pretty"]
+	path = bundle/vim-jsx-pretty
+	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
