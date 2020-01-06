@@ -58,7 +58,7 @@ let g:vim_jsx_pretty_highlight_close_tag = 1
 " Mappings
 nnoremap ; :
 noremap <Leader>w :call TrimWhitespace()<CR>
-nnoremap <Leader>t :tabnew<CR>
+nnoremap <Leader>t :tabnew<CR>:find<Space>
 
 " functions
 fun! TrimWhitespace()
