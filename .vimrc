@@ -14,8 +14,11 @@ set wildmenu
 set backspace=indent,eol,start
 set hlsearch
 
-" terminal
+" splits
+set splitright
 set splitbelow
+
+" terminal
 set termwinsize=15x0
 
 " theme
@@ -59,6 +62,7 @@ let g:vim_jsx_pretty_highlight_close_tag = 1
 nnoremap ; :
 noremap <Leader>w :call TrimWhitespace()<CR>
 nnoremap <Leader>t :tabnew<CR>:find<Space>
+nnoremap <Leader>v :vsp<CR>:find<Space>
 
 " functions
 fun! TrimWhitespace()
