@@ -62,9 +62,6 @@ let g:ale_linters={
       \  'python': ['pylint'],
       \ }
 
-" vim jsx
-let g:vim_jsx_pretty_highlight_close_tag=1
-
 " Mappings
 nnoremap ; :
 noremap <Leader>w :call TrimWhitespace()<CR>
