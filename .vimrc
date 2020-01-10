@@ -39,6 +39,10 @@ let g:netrw_browse_split=4
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
+" YCM
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
 " ALE setup
 " Shorten error/warning flags
 let g:ale_echo_msg_error_str = 'E'
