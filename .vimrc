@@ -39,28 +39,31 @@ let g:netrw_browse_split=4
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
+" AutoPairs
+let g:AutoPairsCenterLine=0
+
 " YCM
 set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_add_preview_to_completeopt=0
 
 " ALE setup
 " Shorten error/warning flags
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_error_str='E'
+let g:ale_echo_msg_warning_str='W'
 
 " Disable or enable loclist at the bottom of vim
 " Comes down to personal preferance.
-let g:ale_open_list = 0
-let g:ale_loclist = 0
+let g:ale_open_list=0
+let g:ale_loclist=0
 
 " Setup compilers for languages
-let g:ale_linters = {
+let g:ale_linters={
       \  'cs':['syntax', 'semantic', 'issues'],
       \  'python': ['pylint'],
       \ }
 
 " vim jsx
-let g:vim_jsx_pretty_highlight_close_tag = 1
+let g:vim_jsx_pretty_highlight_close_tag=1
 
 " Mappings
 nnoremap ; :
@@ -70,7 +73,7 @@ nnoremap <Leader>v :vsp<CR>:find<Space>
 
 " functions
 fun! TrimWhitespace()
-    let l:save = winsaveview()
+    let l:save=winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
