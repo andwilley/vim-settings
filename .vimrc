@@ -1,7 +1,15 @@
 execute pathogen#infect()
 set encoding=utf-8
 syntax on
-set number
+set relativenumber
+set ignorecase
+set smartcase
+set gdefault
+let mapleader=","
+set hidden
+set ttyfast
+set ruler
+set laststatus=2
 
 " whitespace
 autocmd BufWritePre *.rb :%s/\s\+$//e
@@ -12,6 +20,8 @@ set list
 set path+=**
 set wildmenu
 set backspace=indent,eol,start
+set incsearch
+set showmatch
 set hlsearch
 
 " splits
@@ -25,6 +35,8 @@ set termwinsize=15x0
 filetype plugin indent on
 set background=light
 colorscheme solarized
+highlight Comment cterm=italic
+set formatoptions+=or
 
 " tabs
 set expandtab
@@ -35,7 +47,7 @@ autocmd Filetype python setlocal shiftwidth=4
 
 " NETRW setup
 let g:netrw_banner=0
-let g:netrw_browse_split=4
+let g:netrw_browse_split=0
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
@@ -54,12 +66,12 @@ let g:ale_echo_msg_warning_str='W'
 " Disable or enable loclist at the bottom of vim
 " Comes down to personal preferance.
 let g:ale_open_list=0
-let g:ale_loclist=0
+let g:ale_set_loclist=0
 
 " Setup compilers for languages
 let g:ale_linters={
-      \  'cs':['syntax', 'semantic', 'issues'],
       \  'python': ['pylint'],
+      \  'haskell': ['hlint'],
       \ }
 
 " Mappings
@@ -67,6 +79,13 @@ nnoremap ; :
 noremap <Leader>w :call TrimWhitespace()<CR>
 nnoremap <Leader>t :tabnew<CR>:find<Space>
 nnoremap <Leader>v :vsp<CR>:find<Space>
+nnoremap <Leader><Space> :noh<CR>
+nnoremap / /\v
+vnoremap / /\v
+inoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+inoremap jj <ESC>
 
 " functions
 fun! TrimWhitespace()

@@ -17,10 +17,27 @@ Compile YCM (may need to change python version or install dependencies, check `:
 python3 ~/.vim/bundle/YouCompleteMe/install.py --all
 ```
 
-## Add A plugin / library
+Make vimproc (for haskell)
+```bash
+cd bundle/vimproc.vim
+make
+```
 
-from ~/.vim/
+## Add a plugin
+
+From ~/.vim/
 
 ```bash
 git submodule add plugin-git-repo ~/.vim/bundle/repo-name
+```
+
+## Remove a plugin
+
+From ~/.vim/
+
+```bash
+git submodule deinit -f <path_to_submodule>
+rm -rf .git/modules/<path_to_submodule>
+git rm -f <path_to_submodule>
+git commit -m "Removed submodule "
 ```
