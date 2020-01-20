@@ -91,14 +91,25 @@ nnoremap <Leader>t :tabnew<CR>:find<Space>
 nnoremap <Leader>v :vsp<CR>:find<Space>
 nnoremap <Leader><Space> :noh<CR>
 nnoremap / /\v
-vnoremap / /\v
-inoremap <F1> <ESC>
-vnoremap <F1> <ESC>
 nnoremap <F1> <ESC>
-inoremap jj <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
+
 vnoremap <tab> %
+vnoremap / /\v
+vnoremap <F1> <ESC>
+
+inoremap <F1> <ESC>
+inoremap jj <ESC>
+inoremap (; (<CR>);<C-c>O
+inoremap (, (<CR>),<C-c>O
+inoremap (- (<CR>)<C-c>O
+inoremap {; {<CR>};<C-c>O
+inoremap {, {<CR>},<C-c>O
+inoremap {- {<CR>}<C-c>O
+inoremap [; [<CR>];<C-c>O
+inoremap [, [<CR>],<C-c>O
+inoremap [- [<CR>]<C-c>O
 
 " functions
 fun! TrimWhitespace()
