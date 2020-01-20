@@ -17,10 +17,9 @@ Compile YCM (may need to change python version or install dependencies, check `:
 python3 ~/.vim/bundle/YouCompleteMe/install.py --all
 ```
 
-Make vimproc (for haskell)
+Install ctags
 ```bash
-cd bundle/vimproc.vim
-make
+sudo apt install ctags
 ```
 
 ## Add a plugin

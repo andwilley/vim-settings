@@ -10,9 +10,16 @@ set hidden
 set ttyfast
 set ruler
 set laststatus=2
+set nocompatible
+set modelines=0
+set showmode
+set showcmd
+au FocusLost * :wa
+
+" column limit
+call matchadd('ColorColumn', '\%81v', 100)
 
 " whitespace
-autocmd BufWritePre *.rb :%s/\s\+$//e
 set listchars=trail:·
 set list
 
@@ -23,6 +30,9 @@ set backspace=indent,eol,start
 set incsearch
 set showmatch
 set hlsearch
+
+" tags
+let g:gutentags_ctags_exclude=["node_modules", "dist"]
 
 " splits
 set splitright
@@ -70,7 +80,7 @@ let g:ale_set_loclist=0
 
 " Setup compilers for languages
 let g:ale_linters={
-      \  'python': ['pylint'],
+      \  'python': ['pylint', 'mypy'],
       \  'haskell': ['hlint'],
       \ }
 
@@ -86,6 +96,9 @@ inoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 inoremap jj <ESC>
+nnoremap <leader><space> :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
 
 " functions
 fun! TrimWhitespace()
