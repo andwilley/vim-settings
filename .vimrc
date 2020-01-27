@@ -38,9 +38,6 @@ let g:gutentags_ctags_exclude=["node_modules", "dist"]
 set splitright
 set splitbelow
 
-" terminal
-set termwinsize=15x0
-
 " theme
 filetype plugin indent on
 set background=light
