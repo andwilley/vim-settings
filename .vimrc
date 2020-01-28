@@ -59,11 +59,11 @@ let g:netrw_liststyle=3
 " solarized
 " fugitive
 " polyglot
+" obsession
 execute pathogen#infect()
 
 " Goog plugins
 source /usr/share/vim/google/default.vim
-source /usr/share/vim/google/gtags.vim
 
 Glug critique
 Glug relatedfiles plugin[mappings]
