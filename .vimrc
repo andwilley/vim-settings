@@ -1,49 +1,43 @@
-execute pathogen#infect()
+set nocompatible
 set encoding=utf-8
-syntax on
+set history=1000
 set relativenumber
 set ignorecase
 set smartcase
 set gdefault
 let mapleader=","
 set hidden
-set ttyfast
+set ttyfast lazyredraw
 set ruler
 set laststatus=2
-set nocompatible
 set modelines=0
 set showmode
 set showcmd
-au FocusLost * :wa
+set backspace=indent,eol,start
+set visualbell
+set scrolloff=3
+set clipboard=unnamed
 
 " column limit
 call matchadd('ColorColumn', '\%81v', 100)
 
 " whitespace
-set listchars=trail:·
+set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
 set list
 
 " file search
 set path+=**
 set wildmenu
-set backspace=indent,eol,start
+set wildmode=list:longest
+
+" basic search
 set incsearch
 set showmatch
 set hlsearch
 
-" tags
-let g:gutentags_ctags_exclude=["node_modules", "dist"]
-
 " splits
 set splitright
 set splitbelow
-
-" theme
-filetype plugin indent on
-set background=light
-colorscheme solarized
-highlight Comment cterm=italic
-set formatoptions+=or
 
 " tabs
 set expandtab
@@ -58,30 +52,40 @@ let g:netrw_browse_split=0
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
-" AutoPairs
-let g:AutoPairsCenterLine=0
+" drew's plugins
+" solarized
+" fugitive
+" polyglot
+execute pathogen#infect()
+
+" Goog plugins
+source /usr/share/vim/google/default.vim
+source /usr/share/vim/google/gtags.vim
+
+Glug critique
+Glug relatedfiles plugin[mappings]
+Glug ultisnips-google
+Glug youcompleteme-google
+Glug syntastic-google
+Glug piper plugin[mappings]
+Glug codefmt plugin[mappings] gofmt_executable="goimports"
+Glug codefmt-google
+
 
 " YCM
 set completeopt-=preview
-let g:ycm_add_preview_to_completeopt=0
-
-" ALE setup
-" Shorten error/warning flags
-let g:ale_echo_msg_error_str='E'
-let g:ale_echo_msg_warning_str='W'
-
-" Disable or enable loclist at the bottom of vim
-" Comes down to personal preferance.
-let g:ale_open_list=0
-let g:ale_set_loclist=0
-
-" Setup compilers for languages
-let g:ale_linters={
-      \  'python': ['pylint', 'mypy'],
-      \  'haskell': ['hlint'],
-      \ }
 
 " Mappings
+noremap <unique> <Leader>cc :CritiqueComments<CR>
+noremap <unique> <Leader>cn :CritiqueNextComment<CR>
+noremap <unique> <Leader>cp :CritiquePreviousComment<CR>
+noremap <unique> <Leader>h :set list!<CR>
+noremap <unique> <Leader>p :PiperSelectActiveFiles<CR>
+noremap <unique> <Leader>gi :GtImporter<CR>
+noremap <unique> <Leader>gs :GtImporterSort<CR>
+noremap <unique> <Leader>r :RelatedFilesWindow<CR>
+noremap <C-K> :FormatLines<CR>
+
 nnoremap ; :
 noremap <Leader>w :call TrimWhitespace()<CR>
 nnoremap <Leader>t :tabnew<CR>:find<Space>
@@ -107,6 +111,7 @@ inoremap {- {<CR>}<C-c>O
 inoremap [; [<CR>];<C-c>O
 inoremap [, [<CR>],<C-c>O
 inoremap [- [<CR>]<C-c>O
+inoremap <C-K> <C-O>:FormatLines<CR>
 
 " functions
 fun! TrimWhitespace()
@@ -114,3 +119,17 @@ fun! TrimWhitespace()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
+
+"augroup autoformat_settings
+"  autocmd FileType bzl AutoFormatBuffer buildifier
+"  autocmd FileType go AutoFormatBuffer gofmt
+"augroup END
+
+"  theme
+set background=light
+colorscheme solarized
+highlight Comment cterm=italic
+set formatoptions+=or
+
+filetype plugin indent on
+syntax enable
