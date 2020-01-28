@@ -39,6 +39,9 @@ set hlsearch
 set splitright
 set splitbelow
 
+" terminal
+set termwinsize=15x0
+
 " tabs
 set expandtab
 set tabstop=2
@@ -70,7 +73,6 @@ Glug syntastic-google
 Glug piper plugin[mappings]
 Glug codefmt plugin[mappings] gofmt_executable="goimports"
 Glug codefmt-google
-
 
 " YCM
 set completeopt-=preview
@@ -120,6 +122,14 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
+fun! LoadSession()
+  if filereadable("Session.vim")
+    source Session.vim
+  else
+    Obsession
+  endif
+endfun
+
 "augroup autoformat_settings
 "  autocmd FileType bzl AutoFormatBuffer buildifier
 "  autocmd FileType go AutoFormatBuffer gofmt
@@ -133,3 +143,4 @@ set formatoptions+=or
 
 filetype plugin indent on
 syntax enable
+
