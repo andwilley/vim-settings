@@ -83,7 +83,7 @@ noremap <unique> <Leader>h :set list!<CR>
 noremap <unique> <Leader>p :PiperSelectActiveFiles<CR>
 noremap <unique> <Leader>gi :GtImporter<CR>
 noremap <unique> <Leader>gs :GtImporterSort<CR>
-noremap <unique> <Leader>r :RelatedFilesWindow<CR>
+noremap <unique> <Leader>rf :RelatedFilesWindow<CR>
 noremap <C-K> :FormatLines<CR>
 
 nnoremap ; :
