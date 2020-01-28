@@ -12,16 +12,6 @@ If you forget to run --recursive:
 git submodule update --init --recursive
 ```
 
-Compile YCM (may need to change python version or install dependencies, check `:version` in vim)
-```bash
-python3 ~/.vim/bundle/YouCompleteMe/install.py --all
-```
-
-Install ctags
-```bash
-sudo apt install ctags
-```
-
 ## Add a plugin
 
 From ~/.vim/
