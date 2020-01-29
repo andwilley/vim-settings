@@ -40,7 +40,7 @@ set splitright
 set splitbelow
 
 " terminal
-set termwinsize=15x0
+set termwinsize="15x0"
 
 " tabs
 set expandtab
@@ -60,6 +60,7 @@ let g:netrw_liststyle=3
 " fugitive
 " polyglot
 " obsession
+" syntastic
 execute pathogen#infect()
 
 " Goog plugins
@@ -71,6 +72,7 @@ Glug ultisnips-google
 Glug youcompleteme-google
 Glug syntastic-google
 Glug piper plugin[mappings]
+Glug g4
 Glug codefmt plugin[mappings] gofmt_executable="goimports"
 Glug codefmt-google
 
@@ -85,7 +87,6 @@ noremap <unique> <Leader>h :set list!<CR>
 noremap <unique> <Leader>p :PiperSelectActiveFiles<CR>
 noremap <unique> <Leader>gi :GtImporter<CR>
 noremap <unique> <Leader>gs :GtImporterSort<CR>
-noremap <unique> <Leader>rf :RelatedFilesWindow<CR>
 noremap <C-K> :FormatLines<CR>
 
 nnoremap ; :
@@ -97,6 +98,7 @@ nnoremap / /\v
 nnoremap <F1> <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
+nnoremap <leader>c :term<CR><C-w>:resize<space>15<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
