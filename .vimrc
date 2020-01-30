@@ -60,7 +60,6 @@ let g:netrw_liststyle=3
 " fugitive
 " polyglot
 " obsession
-" syntastic
 execute pathogen#infect()
 
 " Goog plugins
@@ -68,16 +67,41 @@ source /usr/share/vim/google/default.vim
 
 Glug critique
 Glug relatedfiles plugin[mappings]
+Glug fileswitch
 Glug ultisnips-google
 Glug youcompleteme-google
-Glug syntastic-google
 Glug piper plugin[mappings]
 Glug g4
 Glug codefmt plugin[mappings] gofmt_executable="goimports"
 Glug codefmt-google
+Glug ft-proto
+Glug ft-python
+Glug ft-java
+Glug ft-soy
+Glug ft-gss
 
 " YCM
 set completeopt-=preview
+
+" ALE
+let g:ale_echo_msg_error_str='E'
+let g:ale_echo_msg_warning_str='W'
+let g:ale_open_list=0
+let g:ale_set_loclist=0
+let g:ale_linters = {
+      \ 'python': ['glint'],
+      \ 'proto': ['glint'],
+      \ 'java': ['glint'],
+      \ 'javascript': ['glint'],
+      \ 'cpp': ['glint'],
+      \ 'go': ['govet'],
+      \}
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_use_global_executables = 1
 
 " Mappings
 noremap <unique> <Leader>cc :CritiqueComments<CR>
