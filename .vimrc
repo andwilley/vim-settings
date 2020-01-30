@@ -28,7 +28,6 @@ set list
 " file search
 set path+=**
 set wildmenu
-set wildmode=list:longest
 
 " basic search
 set incsearch
@@ -64,6 +63,8 @@ execute pathogen#infect()
 
 " Goog plugins
 source /usr/share/vim/google/default.vim
+Glug glug sources+=`$HOME . '/.vim/local'`
+Glug glint-ale
 
 Glug critique
 Glug relatedfiles plugin[mappings]
@@ -83,6 +84,14 @@ Glug ft-gss
 " YCM
 set completeopt-=preview
 
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
 " ALE
 let g:ale_echo_msg_error_str='E'
 let g:ale_echo_msg_warning_str='W'
@@ -93,8 +102,8 @@ let g:ale_linters = {
       \ 'proto': ['glint'],
       \ 'java': ['glint'],
       \ 'javascript': ['glint'],
+      \ 'typescript': ['glint'],
       \ 'cpp': ['glint'],
-      \ 'go': ['govet'],
       \}
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_filetype_changed = 1
@@ -123,6 +132,7 @@ nnoremap <F1> <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 nnoremap <leader>c :term<CR><C-w>:resize<space>15<CR>
+nnoremap <leader>l :call LoadSession()<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
