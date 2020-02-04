@@ -58,7 +58,6 @@ let g:netrw_liststyle=3
 " solarized
 " fugitive
 " polyglot
-" obsession
 execute pathogen#infect()
 
 " Goog plugins
@@ -112,6 +111,10 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_use_global_executables = 1
 
+" Session
+let g:session_autosave = 'yes'
+let g:session_directory = '~/.vim/local/sessions'
+
 " Mappings
 noremap <unique> <Leader>cc :CritiqueComments<CR>
 noremap <unique> <Leader>cn :CritiqueNextComment<CR>
@@ -162,7 +165,10 @@ fun! LoadSession()
   if filereadable("Session.vim")
     source Session.vim
   else
-    Obsession
+    call inputsave()
+    let name = call input('Enter session name: ')
+    SaveSession name
+    call inputrestore()
   endif
 endfun
 
