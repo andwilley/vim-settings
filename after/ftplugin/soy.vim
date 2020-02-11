@@ -1,15 +1,7 @@
 " Put in ~/.vim/after/ftplugin/soy.vim
 
 " 100-column limit
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%101v.\+/
-
-" Highlight the 100th column so we can stay in the Google guidelines
-if exists('+colorcolumn')
-  set colorcolumn=100
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>100v.\+', -1)
-endif
+call matchadd('ColorColumn', '\%101v', 100)
 
 " Matchit support for Soy files.
 if exists("loaded_matchit")

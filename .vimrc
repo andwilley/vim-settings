@@ -65,6 +65,12 @@ source /usr/share/vim/google/default.vim
 Glug glug sources+=`$HOME . '/.vim/local'`
 Glug glint-ale
 
+Glug glug sources+=/google/src/head/depot/google3/experimental/users/jkolb/vim
+Glug simplegutter
+Glug sg_diff plugin[mappings]='cd'
+Glug sg_lint plugin[mappings]='cx'
+Glug sg_blaze plugin[mappings]='cz' auto_query=1
+
 Glug critique
 Glug relatedfiles plugin[mappings]
 Glug fileswitch
@@ -112,14 +118,14 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_use_global_executables = 1
 
 " Session
-let g:session_autosave = 'yes'
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 let g:session_directory = '~/.vim/local/sessions'
 
 " Mappings
 noremap <unique> <Leader>cc :CritiqueComments<CR>
 noremap <unique> <Leader>cn :CritiqueNextComment<CR>
 noremap <unique> <Leader>cp :CritiquePreviousComment<CR>
-noremap <unique> <Leader>h :set list!<CR>
 noremap <unique> <Leader>p :PiperSelectActiveFiles<CR>
 noremap <unique> <Leader>gi :GtImporter<CR>
 noremap <unique> <Leader>gs :GtImporterSort<CR>
@@ -127,8 +133,9 @@ noremap <C-K> :FormatLines<CR>
 
 nnoremap ; :
 noremap <Leader>w :call TrimWhitespace()<CR>
-nnoremap <Leader>t :tabnew<CR>:find<Space>
-nnoremap <Leader>v :vsp<CR>:find<Space>
+nnoremap <Leader>t :tabnew<CR>:e<Space>
+nnoremap <Leader>v :vsp<CR>:e<Space>
+nnoremap <Leader>h :sp<CR>:e<Space>
 nnoremap <Leader><Space> :noh<CR>
 nnoremap / /\v
 nnoremap <F1> <ESC>
@@ -136,6 +143,7 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 nnoremap <leader>c :term<CR><C-w>:resize<space>15<CR>
 nnoremap <leader>l :call LoadSession()<CR>
+nnoremap <leader>gu :call UpdateBuffers()<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
@@ -170,6 +178,12 @@ fun! LoadSession()
     SaveSession name
     call inputrestore()
   endif
+endfun
+
+fun! UpdateBuffers()
+  set noconfirm
+  bufdo e
+  set confirm
 endfun
 
 "augroup autoformat_settings
