@@ -12,21 +12,22 @@ If you forget to run --recursive:
 git submodule update --init --recursive
 ```
 
+Then in vim
+```
+:PluginInstall
+```
+
 ## Add a plugin
 
-From ~/.vim/
-
-```bash
-git submodule add plugin-git-repo ~/.vim/bundle/repo-name
+Add to vimrc
+```
+Plugin 'github/endpoint'
 ```
 
 ## Remove a plugin
 
-From ~/.vim/
+Remove the `Plugin...` line from vimrc, then
 
-```bash
-git submodule deinit -f <path_to_submodule>
-rm -rf .git/modules/<path_to_submodule>
-git rm -f <path_to_submodule>
-git commit -m "Removed submodule "
+```
+:PluginClean
 ```

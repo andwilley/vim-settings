@@ -1,2 +1,4 @@
 .netrwhist
 local/sessions/*
+bundle/*
+!bundle/Vundle.vim

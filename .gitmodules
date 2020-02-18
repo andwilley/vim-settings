@@ -1,18 +1,3 @@
-[submodule "bundle/vim-colors-solarized"]
-	path = bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-polyglot"]
-	path = bundle/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
-[submodule "bundle/vim-fugitive"]
-	path = bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
-[submodule "bundle/vim-session"]
-	path = bundle/vim-session
-	url = https://github.com/xolox/vim-session.git
-[submodule "bundle/vim-misc"]
-	path = bundle/vim-misc
-	url = https://github.com/xolox/vim-misc.git
+[submodule "bundle/Vundle.vim"]
+	path = bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git

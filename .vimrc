@@ -55,84 +55,39 @@ let g:netrw_altv=1
 let g:netrw_liststyle=3
 
 " drew's plugins
-" solarized
-" fugitive
-" polyglot
-execute pathogen#infect()
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-fugitive'
+Plugin 'xolox/vim-misc'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'xolox/vim-session'
+" add these if not in goog env
+if !filereadable("../.vimrc_goog")
+  Plugin 'ycm-core/YouCompleteMe'
+  Plugin 'dense-analysis/ale'
+endif
+call vundle#end()
 
-" Goog plugins
-source /usr/share/vim/google/default.vim
-Glug glug sources+=`$HOME . '/.vim/local'`
-Glug glint-ale
-
-Glug glug sources+=/google/src/head/depot/google3/experimental/users/jkolb/vim
-Glug simplegutter
-Glug sg_diff plugin[mappings]='cd'
-Glug sg_lint plugin[mappings]='cx'
-Glug sg_blaze plugin[mappings]='cz' auto_query=1
-
-Glug critique
-Glug relatedfiles plugin[mappings]
-Glug fileswitch
-Glug ultisnips-google
-Glug youcompleteme-google
-Glug piper plugin[mappings]
-Glug g4
-Glug codefmt plugin[mappings] gofmt_executable="goimports"
-Glug codefmt-google
-Glug ft-proto
-Glug ft-python
-Glug ft-java
-Glug ft-soy
-Glug ft-gss
+" import goog stuff
+if filereadable("../.vimrc_goog")
+  source .vimrc_goog
+endif
 
 " YCM
 set completeopt-=preview
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-" ALE
-let g:ale_echo_msg_error_str='E'
-let g:ale_echo_msg_warning_str='W'
-let g:ale_open_list=0
-let g:ale_set_loclist=0
-let g:ale_linters = {
-      \ 'python': ['glint'],
-      \ 'proto': ['glint'],
-      \ 'java': ['glint'],
-      \ 'javascript': ['glint'],
-      \ 'typescript': ['glint'],
-      \ 'cpp': ['glint'],
-      \}
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_filetype_changed = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_use_global_executables = 1
 
 " Session
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 let g:session_directory = '~/.vim/local/sessions'
 
-" Mappings
-noremap <unique> <Leader>cc :CritiqueComments<CR>
-noremap <unique> <Leader>cn :CritiqueNextComment<CR>
-noremap <unique> <Leader>cp :CritiquePreviousComment<CR>
-noremap <unique> <Leader>p :PiperSelectActiveFiles<CR>
-noremap <unique> <Leader>gi :GtImporter<CR>
-noremap <unique> <Leader>gs :GtImporterSort<CR>
-noremap <C-K> :FormatLines<CR>
-
+" Regular Mappings
 nnoremap ; :
-noremap <Leader>w :call TrimWhitespace()<CR>
+nnoremap <Leader>w :call TrimWhitespace()<CR>
 nnoremap <Leader>t :tabnew<CR>:e<Space>
 nnoremap <Leader>v :vsp<CR>:e<Space>
 nnoremap <Leader>h :sp<CR>:e<Space>
@@ -143,7 +98,6 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 nnoremap <leader>c :term<CR><C-w>:resize<space>15<CR>
 nnoremap <leader>l :call LoadSession()<CR>
-nnoremap <leader>gu :call UpdateBuffers()<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
@@ -160,7 +114,6 @@ inoremap {- {<CR>}<C-c>O
 inoremap [; [<CR>];<C-c>O
 inoremap [, [<CR>],<C-c>O
 inoremap [- [<CR>]<C-c>O
-inoremap <C-K> <C-O>:FormatLines<CR>
 
 " functions
 fun! TrimWhitespace()
@@ -169,6 +122,8 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
+
+" careful, WIP
 fun! LoadSession()
   if filereadable("Session.vim")
     source Session.vim
@@ -180,23 +135,13 @@ fun! LoadSession()
   endif
 endfun
 
-fun! UpdateBuffers()
-  set noconfirm
-  bufdo e
-  set confirm
-endfun
-
-"augroup autoformat_settings
-"  autocmd FileType bzl AutoFormatBuffer buildifier
-"  autocmd FileType go AutoFormatBuffer gofmt
-"augroup END
-
 "  theme
 set background=light
 colorscheme solarized
 highlight Comment cterm=italic
 set formatoptions+=or
 
+" stuff we need
 filetype plugin indent on
 syntax enable
 
