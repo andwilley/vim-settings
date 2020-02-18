@@ -59,22 +59,26 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'xolox/vim-misc'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'xolox/vim-session'
 " add these if not in goog env
-if !filereadable("../.vimrc_goog")
+if filereadable(expand("~/goog.vim"))
+  Plugin 'prabirshrestha/async.vim'
+  Plugin 'prabirshrestha/vim-lsp'
+  Plugin 'prabirshrestha/asyncomplete.vim'
+  Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+else
   Plugin 'ycm-core/YouCompleteMe'
   Plugin 'dense-analysis/ale'
 endif
 call vundle#end()
 
 " import goog stuff
-if filereadable("../.vimrc_goog")
-  source .vimrc_goog
+if filereadable(expand("~/goog.vim"))
+  source ~/goog.vim
 endif
 
 " YCM
@@ -89,8 +93,8 @@ let g:session_directory = '~/.vim/local/sessions'
 nnoremap ; :
 nnoremap <Leader>w :call TrimWhitespace()<CR>
 nnoremap <Leader>t :tabnew<CR>:e<Space>
-nnoremap <Leader>v :vsp<CR>:e<Space>
-nnoremap <Leader>h :sp<CR>:e<Space>
+nnoremap <Leader>\| :vsp<CR>:e<Space>
+nnoremap <Leader>- :sp<CR>:e<Space>
 nnoremap <Leader><Space> :noh<CR>
 nnoremap / /\v
 nnoremap <F1> <ESC>
