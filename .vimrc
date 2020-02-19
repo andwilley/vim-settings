@@ -59,6 +59,8 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mhinz/vim-signify'
@@ -83,6 +85,11 @@ call vundle#end()
 if filereadable(expand("~/goog.vim"))
   source ~/goog.vim
 endif
+
+" airline
+let g:airline_theme='solarized'
+let g:airline_solarized_normal_green = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " NERDtree
 :nnoremap <leader>n :NERDTreeToggle<CR>
