@@ -61,9 +61,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
-Plugin 'xolox/vim-misc'
+Plugin 'mhinz/vim-signify'
+Plugin 'preservim/nerdtree'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
+Plugin 'tpope/vim-unimpaired'
 " add these if not in goog env
 if filereadable(expand("~/goog.vim"))
   Plugin 'prabirshrestha/async.vim'
@@ -81,13 +84,33 @@ if filereadable(expand("~/goog.vim"))
   source ~/goog.vim
 endif
 
+" NERDtree
+:nnoremap <leader>n :NERDTreeToggle<CR>
+
 " YCM
 set completeopt-=preview
+if !exists("g:ycm_semantic_triggers")
+   let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers = {
+  \ 'typescript': ['.'],
+  \ 'javascript': ['.']
+  \}
+
+nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
+
+" polyglot
+" let g:polyglot_disabled = ['jsx']
+
+" signify
+set updatetime=100
 
 " Session
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 let g:session_directory = '~/.vim/local/sessions'
+
+nnoremap <leader>l :call LoadSession()<CR>
 
 " Regular Mappings
 nnoremap ; :
@@ -101,7 +124,6 @@ nnoremap <F1> <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 nnoremap <leader>c :term<CR><C-w>:resize<space>15<CR>
-nnoremap <leader>l :call LoadSession()<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
