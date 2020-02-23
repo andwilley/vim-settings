@@ -17,6 +17,8 @@ set backspace=indent,eol,start
 set visualbell
 set scrolloff=3
 set clipboard=unnamed
+set autoread
+set cursorline
 
 " column limit
 call matchadd('ColorColumn', '\%81v', 100)
@@ -62,13 +64,21 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ludovicchabant/vim-lawrencium'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-surround'
+" Plugin 'scrooloose/syntastic'
+Plugin 'schickling/vim-bufonly'
+Plugin 'tpope/vim-repeat'
 Plugin 'mhinz/vim-signify'
 Plugin 'preservim/nerdtree'
+Plugin 'preservim/nerdcommenter'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'tpope/vim-unimpaired'
+" Plugin 'easymotion/vim-easymotion'
 " add these if not in goog env
 if filereadable(expand("~/goog.vim"))
   Plugin 'prabirshrestha/async.vim'
@@ -81,14 +91,29 @@ else
 endif
 call vundle#end()
 
+" delimitmate
+let g:delimitMate_jump_expansion = 1
+let g:delimitMate_expand_cr = 2
+let g:delimitMate_expand_space = 1
+let g:delimitMate_balance_matchpair = 1
+
 " import goog stuff
 if filereadable(expand("~/goog.vim"))
   source ~/goog.vim
 endif
 
+" syntastic
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_error_symbol = "✗"
+" let g:syntastic_warning_symbol = "⚠"
+" let g:syntastic_enable_balloons = 1
+" let g:syntastic_enable_highlighting = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_aggregate_errors = 1
+" let g:syntastic_javascript_checkers = [ 'glint' ]
+
 " airline
 let g:airline_theme='solarized'
-let g:airline_solarized_normal_green = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " NERDtree
@@ -107,7 +132,7 @@ let g:ycm_semantic_triggers = {
 nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 
 " polyglot
-" let g:polyglot_disabled = ['jsx']
+let g:polyglot_disabled = ['jsx']
 
 " signify
 set updatetime=100
