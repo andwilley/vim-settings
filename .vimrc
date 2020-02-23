@@ -88,6 +88,7 @@ if filereadable(expand("~/goog.vim"))
 else
   Plugin 'ycm-core/YouCompleteMe'
   Plugin 'dense-analysis/ale'
+  Plugin 'ludovicchabant/vim-gutentags'
 endif
 call vundle#end()
 
