@@ -78,6 +78,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'jalvesaq/Nvim-R'
 " Plugin 'easymotion/vim-easymotion'
 " add these if not in goog env
 if filereadable(expand("~/goog.vim"))
