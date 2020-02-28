@@ -1,6 +1,7 @@
 set nocompatible
 set encoding=utf-8
 set history=1000
+set number
 set relativenumber
 set ignorecase
 set smartcase
@@ -166,7 +167,7 @@ nnoremap / /\v
 nnoremap <F1> <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
-nnoremap <leader>c :term<CR><C-w>:resize<space>15<CR>
+nnoremap <leader>sc :let @+=TrimCitcPath(expand('%:p'))<CR>:echom "file path copied to clipboard"<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
@@ -174,21 +175,18 @@ vnoremap <F1> <ESC>
 
 inoremap <F1> <ESC>
 inoremap jj <ESC>
-inoremap (; (<CR>);<C-c>O
-inoremap (, (<CR>),<C-c>O
-inoremap (- (<CR>)<C-c>O
-inoremap {; {<CR>};<C-c>O
-inoremap {, {<CR>},<C-c>O
-inoremap {- {<CR>}<C-c>O
-inoremap [; [<CR>];<C-c>O
-inoremap [, [<CR>],<C-c>O
-inoremap [- [<CR>]<C-c>O
 
 " functions
 fun! TrimWhitespace()
-    let l:save=winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+  let l:save=winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+" get rid of the citc path if it exists (this is pretty naive)
+fun! TrimCitcPath(path)
+  let halves = split(a:path, 'google3')
+  return halves[-1]
 endfun
 
 
