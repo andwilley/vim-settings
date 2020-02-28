@@ -6,12 +6,13 @@ set ignorecase
 set smartcase
 set gdefault
 let mapleader=","
+let maplocalleader = ','
 set hidden
 set ttyfast lazyredraw
 set ruler
 set laststatus=2
 set modelines=0
-set showmode
+set noshowmode
 set showcmd
 set backspace=indent,eol,start
 set visualbell
@@ -102,6 +103,11 @@ let g:delimitMate_balance_matchpair = 1
 " import goog stuff
 if filereadable(expand("~/goog.vim"))
   source ~/goog.vim
+else
+  let g:ale_lint_on_text_changed = 0
+  let g:ale_lint_on_insert_leave = 1
+  let g:ale_lint_on_enter = 0
+  let g:ale_lint_on_save = 0
 endif
 
 " syntastic
@@ -130,6 +136,9 @@ let g:ycm_semantic_triggers = {
   \ 'typescript': ['.'],
   \ 'javascript': ['.']
   \}
+
+" Nvim-R
+let R_assign = 0
 
 nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 
