@@ -81,7 +81,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jalvesaq/Nvim-R'
-" Plugin 'easymotion/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 " add these if not in goog env
 if filereadable(expand("~/goog.vim"))
   Plugin 'prabirshrestha/async.vim'
@@ -126,7 +126,12 @@ let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 " NERDtree
-:nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+" Easy Motion
+let g:EasyMotion_do_mapping = 0
+map <leader> <Plug>(easymotion-prefix)
+nmap <leader>f <Plug>(easymotion-overwin-f2)
 
 " YCM
 set completeopt-=preview
