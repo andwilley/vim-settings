@@ -188,7 +188,7 @@ fun! TrimWhitespace()
   call winrestview(l:save)
 endfun
 
-" get rid of the citc path if it exists (this is pretty naive)
+" get rid of the part of the path we don't want (this is pretty naive)
 fun! TrimPath(path)
   let halves = split(a:path, 'google3/')
   return halves[-1]
