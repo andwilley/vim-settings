@@ -171,7 +171,7 @@ nnoremap / /\v
 nnoremap <F1> <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
-nnoremap <leader>sc :let @+=TrimCitcPath(expand('%:p'))<CR>:echom "file path copied to clipboard"<CR>
+nnoremap <leader>sc :let @+=TrimPath(expand('%:p'))<CR>:echom "file path copied to clipboard"<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
@@ -189,7 +189,7 @@ fun! TrimWhitespace()
 endfun
 
 " get rid of the citc path if it exists (this is pretty naive)
-fun! TrimCitcPath(path)
+fun! TrimPath(path)
   let halves = split(a:path, 'google3/')
   return halves[-1]
 endfun
