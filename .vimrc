@@ -142,11 +142,10 @@ let g:ycm_semantic_triggers = {
   \ 'typescript': ['.'],
   \ 'javascript': ['.']
   \}
+nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 
 " Nvim-R
 let R_assign = 0
-
-nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 
 " polyglot
 let g:polyglot_disabled = ['jsx']
@@ -177,6 +176,7 @@ nnoremap <leader>sc :let @+=TrimCitcPath(expand('%:p'))<CR>:echom "file path cop
 vnoremap <tab> %
 vnoremap / /\v
 vnoremap <F1> <ESC>
+vnoremap * y/<c-R>"<CR>
 
 inoremap <F1> <ESC>
 inoremap jj <ESC>
@@ -190,7 +190,7 @@ endfun
 
 " get rid of the citc path if it exists (this is pretty naive)
 fun! TrimCitcPath(path)
-  let halves = split(a:path, 'google3')
+  let halves = split(a:path, 'google3/')
   return halves[-1]
 endfun
 
