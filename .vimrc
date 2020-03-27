@@ -171,7 +171,12 @@ nnoremap / /\v
 nnoremap <F1> <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
+" copy the current full file path to the clipboard
 nnoremap <leader>sc :let @+=TrimPath(expand('%:p'))<CR>:echom "file path copied to clipboard"<CR>
+" put the current full file path on an 'edit' line
+nnoremap <leader>sp :let @+=TrimPath(expand('%:p'))<CR>:e <C-R>%
+" open the BUILD file in the same directory as this file
+nnoremap <leader>sb :exec 'e ' . ReplaceWithBuild(TrimPath(expand('%:p')))<CR>
 
 vnoremap <tab> %
 vnoremap / /\v
@@ -194,6 +199,12 @@ fun! TrimPath(path)
   return halves[-1]
 endfun
 
+" replace the filename with BUILD
+fun! ReplaceWithBuild(path)
+  let bits = split(a:path, '/')
+  let bits[-1] = 'BUILD'
+  return join(bits, '/')
+endfun
 
 " careful, WIP
 fun! LoadSession()
