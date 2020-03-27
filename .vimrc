@@ -111,16 +111,6 @@ else
   let g:ale_lint_on_save = 0
 endif
 
-" syntastic
-" let g:syntastic_enable_signs = 1
-" let g:syntastic_error_symbol = "✗"
-" let g:syntastic_warning_symbol = "⚠"
-" let g:syntastic_enable_balloons = 1
-" let g:syntastic_enable_highlighting = 0
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_aggregate_errors = 1
-" let g:syntastic_javascript_checkers = [ 'glint' ]
-
 " airline
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
