@@ -208,8 +208,8 @@ endfun
 "  theme
 set background=light
 colorscheme solarized
+let g:solarized_diffmode='high'
 colorscheme extracolors
-highlight Comment cterm=italic
 set formatoptions+=or
 
 " stuff we need
