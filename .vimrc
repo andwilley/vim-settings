@@ -22,9 +22,6 @@ set clipboard=unnamed
 set autoread
 set cursorline
 
-" column limit
-call matchadd('ColorColumn', '\%81v', 100)
-
 " whitespace
 set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
 set list
@@ -211,6 +208,7 @@ endfun
 "  theme
 set background=light
 colorscheme solarized
+colorscheme extracolors
 highlight Comment cterm=italic
 set formatoptions+=or
 
