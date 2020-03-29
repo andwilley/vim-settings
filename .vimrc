@@ -205,11 +205,22 @@ fun! LoadSession()
   endif
 endfun
 
+" extra colors
+function! MyHighlights() abort
+    highlight OverLength  ctermbg=125 ctermfg=15
+    highlight Comment     cterm=italic
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
+
 "  theme
 set background=light
 let g:solarized_diffmode='high'
 colorscheme solarized
-colorscheme extracolors
+match OverLength /\%81v/
 set formatoptions+=or
 
 " stuff we need
