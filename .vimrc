@@ -207,8 +207,8 @@ endfun
 
 "  theme
 set background=light
-colorscheme solarized
 let g:solarized_diffmode='high'
+colorscheme solarized
 colorscheme extracolors
 set formatoptions+=or
 
