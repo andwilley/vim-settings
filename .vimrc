@@ -26,6 +26,9 @@ set cursorline
 set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
 set list
 
+" list of files with 100 max cols (filetype must be detected, duh)
+let long_files = ['soy', 'css', 'gss']
+
 " file search
 set path+=**
 set wildmenu
@@ -206,21 +209,31 @@ fun! LoadSession()
 endfun
 
 " extra colors
-function! MyHighlights() abort
+fun! MyHighlights() abort
     highlight OverLength  ctermbg=125 ctermfg=15
-    highlight Comment     cterm=italic
-endfunction
+endfun
 
+" change matched col base on filetype
+fun! SetMatchedCol(filetype, long_files)
+  if index(a:long_files, a:filetype) >= 0
+    match OverLength /\%101v/
+  else
+    match OverLength /\%81v/
+  endif
+endfun
+
+" auto commands
 augroup MyColors
     autocmd!
     autocmd ColorScheme * call MyHighlights()
 augroup END
 
+autocmd BufEnter * call SetMatchedCol(&filetype, long_files)
+
 "  theme
 set background=light
 let g:solarized_diffmode='high'
 colorscheme solarized
-match OverLength /\%81v/
 set formatoptions+=or
 
 " stuff we need
