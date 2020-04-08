@@ -83,7 +83,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'easymotion/vim-easymotion'
 " add these if not in goog env
-if filereadable(expand("~/goog.vim"))
+if filereadable(expand("~/.goog/goog.vim"))
   Plugin 'prabirshrestha/async.vim'
   Plugin 'prabirshrestha/vim-lsp'
   Plugin 'prabirshrestha/asyncomplete.vim'
@@ -102,8 +102,8 @@ let g:delimitMate_expand_space = 1
 let g:delimitMate_balance_matchpair = 1
 
 " import goog stuff
-if filereadable(expand("~/goog.vim"))
-  source ~/goog.vim
+if filereadable(expand("~/.goog/goog.vim"))
+  source ~/.goog/goog.vim
 else
   let g:ale_lint_on_text_changed = 0
   let g:ale_lint_on_insert_leave = 1
