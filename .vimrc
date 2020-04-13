@@ -27,7 +27,7 @@ set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
 set list
 
 " list of files with 100 max cols (filetype must be detected, duh)
-let long_files = ['soy', 'css', 'gss']
+let long_files = ['soy', 'css', 'gss', 'scss']
 
 " file search
 set path+=**
