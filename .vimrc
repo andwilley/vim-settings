@@ -27,7 +27,7 @@ set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
 set list
 
 " list of files with 100 max cols (filetype must be detected, duh)
-let long_files = ['soy', 'css', 'gss', 'scss']
+let long_files = ['soy', 'css', 'gss', 'scss', 'sql']
 
 " file search
 set path+=**
@@ -82,6 +82,7 @@ Plugin 'xolox/vim-session'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'dense-analysis/ale'
 " add these if not in goog env
 if filereadable(expand("~/.goog/goog.vim"))
   Plugin 'prabirshrestha/async.vim'
@@ -90,7 +91,6 @@ if filereadable(expand("~/.goog/goog.vim"))
   Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 else
   Plugin 'ycm-core/YouCompleteMe'
-  Plugin 'dense-analysis/ale'
   Plugin 'ludovicchabant/vim-gutentags'
 endif
 call vundle#end()
@@ -105,11 +105,6 @@ let g:delimitMate_balance_matchpair = 1
 if filereadable(expand("~/.goog/goog.vim"))
   source ~/.goog/goog.vim
 else
-  let g:ale_lint_on_text_changed = 0
-  let g:ale_lint_on_insert_leave = 1
-  let g:ale_lint_on_enter = 0
-  let g:ale_lint_on_save = 1
-
   let g:ale_fixers = {
   \ 'javascript': ['prettier'],
   \ 'haskell': ['brittany'],
@@ -117,12 +112,20 @@ else
   let g:ale_fix_on_save = 1
 endif
 
+" ALE
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+
+
 " airline
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
 
 " NERDtree
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 
 " Easy Motion
 let g:EasyMotion_do_mapping = 0
@@ -134,10 +137,12 @@ set completeopt-=preview
 if !exists("g:ycm_semantic_triggers")
    let g:ycm_semantic_triggers = {}
 endif
+let g:ycm_max_diagnostics_to_display = 0
 let g:ycm_semantic_triggers = {
   \ 'typescript': ['.'],
   \ 'javascript': ['.']
   \}
+nnoremap <leader>im :YcmShowDetailedDiagnostic<CR>
 nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 
 " Nvim-R
