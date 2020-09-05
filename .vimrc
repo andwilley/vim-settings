@@ -27,7 +27,7 @@ set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
 set list
 
 " list of files with 100 max cols (filetype must be detected, duh)
-let long_files = ['soy', 'css', 'gss', 'scss', 'sql']
+let long_files = ['soy', 'css', 'gss', 'scss', 'sql', 'java']
 
 " file search
 set path+=**
@@ -51,6 +51,8 @@ set tabstop=2
 set shiftwidth=2
 autocmd Filetype python setlocal tabstop=4
 autocmd Filetype python setlocal shiftwidth=4
+autocmd Filetype java setlocal tabstop=4
+autocmd Filetype java setlocal shiftwidth=4
 
 " NETRW setup
 let g:netrw_banner=0
@@ -91,7 +93,7 @@ if filereadable(expand("~/.goog/goog.vim"))
   Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 else
   Plugin 'ycm-core/YouCompleteMe'
-  Plugin 'ludovicchabant/vim-gutentags'
+  Plugin 'mileszs/ack.vim'
 endif
 call vundle#end()
 
@@ -105,11 +107,27 @@ let g:delimitMate_balance_matchpair = 1
 if filereadable(expand("~/.goog/goog.vim"))
   source ~/.goog/goog.vim
 else
+  " setup non-goog stuff
   let g:ale_fixers = {
   \ 'javascript': ['prettier'],
+  \ 'typescript': ['prettier'],
+  \ 'typescriptreact': ['prettier'],
   \ 'haskell': ['brittany'],
+  \ 'xml': ['xmllint'],
   \}
   let g:ale_fix_on_save = 1
+
+  " ACK
+  let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+  let g:ack_autoclose = 1
+  let g:ack_use_cword_for_empty_search = 1
+  cnoreabbrev Ack Ack!
+
+  " Maps <leader>/ so we're ready to type the search keyword
+  nnoremap <Leader>/ :Ack!<Space>
+
+  " Lombok
+  "let $JAVA_TOOL_OPTIONS = "-javaagent:~/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar -Xbootclasspath/p:~/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar"
 endif
 
 " ALE
