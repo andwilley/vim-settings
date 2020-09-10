@@ -118,13 +118,11 @@ else
   let g:ale_fix_on_save = 0
 
   " ACK
-  let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
-  let g:ack_autoclose = 1
   let g:ack_use_cword_for_empty_search = 1
-  cnoreabbrev Ack Ack!
 
   " Maps <leader>/ so we're ready to type the search keyword
   nnoremap <Leader>/ :Ack!<Space>
+  nnoremap <Leader>/f :AckFile!<Space>
 
   " Lombok (set $PATH_TO_LOMBOK_JAR in local bashrc)
   let $JAVA_TOOL_OPTIONS = "-javaagent:" . $PATH_TO_LOMBOK_JAR . " -Xbootclasspath/p:" . $PATH_TO_LOMBOK_JAR
