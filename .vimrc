@@ -125,7 +125,9 @@ else
   nnoremap <Leader>/f :AckFile!<Space>
 
   " Lombok (set $PATH_TO_LOMBOK_JAR in local bashrc)
-  let $JAVA_TOOL_OPTIONS = "-javaagent:" . $PATH_TO_LOMBOK_JAR . " -Xbootclasspath/p:" . $PATH_TO_LOMBOK_JAR
+  if len($PATH_TO_LOMBOK_JAR) > 0
+    let $JAVA_TOOL_OPTIONS = "-javaagent:" . $PATH_TO_LOMBOK_JAR . " -Xbootclasspath/p:" . $PATH_TO_LOMBOK_JAR
+  endif
 endif
 
 " ALE
