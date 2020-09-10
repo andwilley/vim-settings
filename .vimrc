@@ -126,8 +126,8 @@ else
   " Maps <leader>/ so we're ready to type the search keyword
   nnoremap <Leader>/ :Ack!<Space>
 
-  " Lombok
-  let $JAVA_TOOL_OPTIONS = "-javaagent:/home/rafiki/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar -Xbootclasspath/p:/home/rafiki/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar"
+  " Lombok (set $PATH_TO_LOMBOK_JAR in local bashrc)
+  let $JAVA_TOOL_OPTIONS = "-javaagent:" . $PATH_TO_LOMBOK_JAR . " -Xbootclasspath/p:" . $PATH_TO_LOMBOK_JAR
 endif
 
 " ALE
