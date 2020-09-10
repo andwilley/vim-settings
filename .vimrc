@@ -115,7 +115,7 @@ else
   \ 'haskell': ['brittany'],
   \ 'xml': ['xmllint'],
   \}
-  let g:ale_fix_on_save = 1
+  let g:ale_fix_on_save = 0
 
   " ACK
   let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
@@ -127,7 +127,7 @@ else
   nnoremap <Leader>/ :Ack!<Space>
 
   " Lombok
-  "let $JAVA_TOOL_OPTIONS = "-javaagent:~/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar -Xbootclasspath/p:~/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar"
+  let $JAVA_TOOL_OPTIONS = "-javaagent:/home/rafiki/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar -Xbootclasspath/p:/home/rafiki/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar"
 endif
 
 " ALE
