@@ -167,7 +167,7 @@ nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 let R_assign = 0
 
 " polyglot
-let g:polyglot_disabled = ['jsx']
+"let g:polyglot_disabled = ['jsx']
 
 " signify
 set updatetime=100
