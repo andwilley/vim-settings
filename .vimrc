@@ -119,6 +119,7 @@ else
 
   " ACK
   let g:ack_use_cword_for_empty_search = 1
+  let g:ack_default_options = "--smart-case"
 
   " Maps <leader>/ so we're ready to type the search keyword
   nnoremap <Leader>/ :Ack!<Space>
