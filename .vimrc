@@ -162,9 +162,6 @@ nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 " Nvim-R
 let R_assign = 0
 
-" polyglot
-"let g:polyglot_disabled = ['jsx']
-
 " signify
 set updatetime=100
 
