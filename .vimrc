@@ -72,7 +72,6 @@ Plugin 'ludovicchabant/vim-lawrencium'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-surround'
-" Plugin 'scrooloose/syntastic'
 Plugin 'schickling/vim-bufonly'
 Plugin 'tpope/vim-repeat'
 Plugin 'mhinz/vim-signify'
@@ -83,17 +82,12 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'jalvesaq/Nvim-R'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'dense-analysis/ale'
+Plugin 'mileszs/ack.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 " add these if not in goog env
-if filereadable(expand("~/.goog/goog.vim"))
-  Plugin 'prabirshrestha/async.vim'
-  Plugin 'prabirshrestha/vim-lsp'
-  Plugin 'prabirshrestha/asyncomplete.vim'
-  Plugin 'prabirshrestha/asyncomplete-lsp.vim'
-else
+if !filereadable(expand("~/.goog/goog.vim"))
   Plugin 'ycm-core/YouCompleteMe'
-  Plugin 'mileszs/ack.vim'
 endif
 call vundle#end()
 
@@ -121,7 +115,8 @@ else
   let g:ack_use_cword_for_empty_search = 1
   let g:ack_default_options = " --smart-case"
 
-  " Maps <leader>/ so we're ready to type the search keyword
+  " Maps <leader>/ so we're ready to type the search keyword.
+  " This is mapped differently for goog env.
   nnoremap <Leader>/ :Ack!<Space>
   nnoremap <Leader>/f :AckFile!<Space>
 
@@ -167,11 +162,21 @@ nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 " Nvim-R
 let R_assign = 0
 
-" polyglot
-"let g:polyglot_disabled = ['jsx']
-
 " signify
 set updatetime=100
+
+" CtrlP Setup
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+" requires adding .ctrlp files to roots locally.
+let g:ctrlp_root_markers = ['.ctrlp']
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v[\/](\.(git|hg|svn)|node_modules)$',
+  \ 'file': '\v(\~$|\/(exe|so|dll|png|jpg|gif|zip|rar|tar|gz|map))$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " Session
 let g:session_autosave = 'no'
@@ -241,6 +246,7 @@ endfun
 " extra colors
 fun! MyHighlights() abort
     highlight OverLength  ctermbg=125 ctermfg=15
+    " highlight Comment cterm=italic
 endfun
 
 " change matched col base on filetype
