@@ -113,6 +113,7 @@ else
 
   " ACK
   let g:ack_use_cword_for_empty_search = 1
+  let g:ack_default_options = "--smart-case"
 
   " Maps <leader>/ so we're ready to type the search keyword.
   " This is mapped differently for goog env.
@@ -162,7 +163,7 @@ nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
 let R_assign = 0
 
 " polyglot
-let g:polyglot_disabled = ['jsx']
+"let g:polyglot_disabled = ['jsx']
 
 " signify
 set updatetime=100
