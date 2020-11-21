@@ -2,8 +2,8 @@
             --enable-multibyte \
             --enable-rubyinterp=yes \
             --enable-python3interp=yes \
-            --with-python3-config-dir=$(python3.5-config --configdir) \
-            --with-python3-command=python3.5 \
+            --with-python3-config-dir=$(python3.6-config --configdir) \
+            --with-python3-command=python3.6 \
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
             --enable-terminal \
