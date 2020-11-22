@@ -1,8 +1,6 @@
 set nocompatible
 set encoding=utf-8
 set history=1000
-set ignorecase
-set smartcase
 set gdefault
 let mapleader=","
 let maplocalleader = ','
@@ -36,6 +34,7 @@ set path+=**
 set wildmenu
 
 " basic search
+set smartcase
 set incsearch
 set showmatch
 set hlsearch
@@ -61,6 +60,10 @@ let g:netrw_banner=0
 let g:netrw_browse_split=0
 let g:netrw_altv=1
 let g:netrw_liststyle=3
+
+" special syntax cases
+autocmd BufNewFile,BufRead *.bash* set syntax=bash
+autocmd BufNewFile,BufRead *.soy set syntax=soy
 
 " drew's plugins
 filetype off
