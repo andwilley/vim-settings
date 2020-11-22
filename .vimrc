@@ -1,8 +1,6 @@
 set nocompatible
 set encoding=utf-8
 set history=1000
-set number
-set relativenumber
 set ignorecase
 set smartcase
 set gdefault
@@ -10,7 +8,6 @@ let mapleader=","
 let maplocalleader = ','
 set hidden
 set ttyfast lazyredraw
-set ruler
 set laststatus=2
 set modelines=0
 set noshowmode
@@ -20,7 +17,12 @@ set visualbell
 set scrolloff=3
 set clipboard=unnamed
 set autoread
+
+" line numbers and highlights
 set cursorline
+set ruler
+set number
+set relativenumber
 
 " whitespace
 set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
@@ -156,8 +158,35 @@ let g:ycm_semantic_triggers = {
   \ 'typescript': ['.'],
   \ 'javascript': ['.']
   \}
-nnoremap <leader>im :YcmShowDetailedDiagnostic<CR>
-nnoremap <leader>id :YcmCompleter GoToDefinition<CR>
+" Think [i]de [s]how ...
+" ... [e]xpand
+nnoremap <leader>ise :YcmShowDetailedDiagnostic<CR>
+" ... [t]ype
+nnoremap <leader>ist :YcmCompleter GetType<CR>
+" ... [d]oc
+nnoremap <leader>isd :YcmCompleter GetDoc<CR>
+
+" THink [i]de [g]oto ...
+" ... [d]efinition
+nnoremap <leader>igd :YcmCompleter GoToDefinition<CR>
+" ... [r]eferences
+nnoremap <leader>igr :YcmCompleter GoToReferences<CR>
+
+" Think [i]de [c]hange ...
+" ... [f]ix
+nnoremap <leader>icf :YcmCompleter FixIt<CR>
+" ... [r]ename
+nnoremap <leader>icr :YcmCompleter RefactorRename<CR>
+" ... [o]rganize [i]mports
+nnoremap <leader>icoi :YcmCompleter OrganizeImports<CR>
+
+" NERD commenter
+" <leader>c<space> is comment toggle
+" <leader>cA switches comment symbol
+" <leader>c$ comment from cursor to end of line
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
 
 " Nvim-R
 let R_assign = 0
@@ -196,6 +225,9 @@ nnoremap / /\v
 nnoremap <F1> <ESC>
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
+" quick arrows
+inoremap <leader>= =><space>
+inoremap <leader>- -><space>
 " copy the current full file path to the clipboard
 nnoremap <leader>sc :let @+=TrimPath(expand('%:p'))<CR>:echom "file path copied to clipboard"<CR>
 " put the current full file path on an 'edit' line
@@ -246,6 +278,7 @@ endfun
 " extra colors
 fun! MyHighlights() abort
     highlight OverLength  ctermbg=125 ctermfg=15
+    " struggling to get this to work in remote tmux:
     " highlight Comment cterm=italic
 endfun
 
