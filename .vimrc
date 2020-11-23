@@ -15,6 +15,7 @@ set visualbell
 set scrolloff=3
 set clipboard=unnamed
 set autoread
+set ignorecase
 
 " line numbers and highlights
 set cursorline
