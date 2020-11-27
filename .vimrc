@@ -180,7 +180,7 @@ nnoremap <leader>igr :YcmCompleter GoToReferences<CR>
 " ... [f]ix
 nnoremap <leader>icf :YcmCompleter FixIt<CR>
 " ... [r]ename
-nnoremap <leader>icr :YcmCompleter RefactorRename<CR>
+nnoremap <leader>icr :YcmCompleter RefactorRename<space>
 " ... [o]rganize [i]mports
 nnoremap <leader>icoi :YcmCompleter OrganizeImports<CR>
 
