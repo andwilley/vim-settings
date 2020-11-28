@@ -131,6 +131,9 @@ else
     let $JAVA_TOOL_OPTIONS = "-javaagent:" . $PATH_TO_LOMBOK_JAR
     " ". " --patch-module " . "lombok=" . $PATH_TO_LOMBOK_JAR
   endif
+
+  " disable ALE for Java outside of goog (ycm is better)
+  let g:ale_linters = {'java': []}
 endif
 
 " ALE
