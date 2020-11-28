@@ -128,7 +128,8 @@ else
 
   " Lombok (set $PATH_TO_LOMBOK_JAR in local bashrc)
   if len($PATH_TO_LOMBOK_JAR) > 0
-    let $JAVA_TOOL_OPTIONS = "-javaagent:" . $PATH_TO_LOMBOK_JAR . " -Xbootclasspath/p:" . $PATH_TO_LOMBOK_JAR
+    let $JAVA_TOOL_OPTIONS = "-javaagent:" . $PATH_TO_LOMBOK_JAR
+    " ". " --patch-module " . "lombok=" . $PATH_TO_LOMBOK_JAR
   endif
 endif
 
@@ -139,33 +140,12 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 
 " Vimspector
-let g:ycm_java_jdtls_extension_path = [
-  \ '/home/rafiki/pack/vimspector/opt/vimspector/gadgets/linux'
-  \ ]
+let g:vimspector_install_gadgets = [ 'java-debug-adpter', 'vscode-java-debug', 'vscode-node-debug2', 'debugger-for-chrome' ]
 
-let s:jdt_ls_debugger_port = 0
-function! s:StartDebugging()
-  if s:jdt_ls_debugger_port <= 0
-    " Get the DAP port
-    let s:jdt_ls_debugger_port = youcompleteme#GetCommandResponse(
-      \ 'ExecuteCommand',
-      \ 'vscode.java.startDebugSession' )
-    echom s:jdt_ls_debugger_port
-
-    if s:jdt_ls_debugger_port == ''
-      echom "Unable to get DAP port - is JDT.LS initialized?"
-      let s:jdt_ls_debugger_port = 0
-      return
-    endif
-    echom "starting server"
-  endif
-
-  " Start debugging with the DAP port
-  call vimspector#LaunchWithSettings( { 'DAPPort': s:jdt_ls_debugger_port } )
-  echom "starting server"
-endfunction
-
-nnoremap <buffer> <Leader>db :call <SID>StartDebugging()<CR>
+if filereadable(expand("~/.vim/pack/vimspector/opt/vimspector/install_gadget.py"))
+  packadd vimspector
+  VimspectorInstall
+endif
 
 " airline
 let g:airline_theme='solarized'
@@ -175,28 +155,19 @@ let g:airline#extensions#tabline#enabled = 1
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
 
-" Easy Motion
-let g:EasyMotion_do_mapping = 0
-map <leader> <Plug>(easymotion-prefix)
-nmap <leader>f <Plug>(easymotion-overwin-f2)
-
 " YCM
 set completeopt-=preview
-if !exists("g:ycm_semantic_triggers")
-   let g:ycm_semantic_triggers = {}
-endif
 let g:ycm_max_diagnostics_to_display = 0
-let g:ycm_semantic_triggers = {
-  \ 'typescript': ['.'],
-  \ 'javascript': ['.']
-  \}
+
 " Think [i]de [s]how ...
 " ... [e]xpand
-nnoremap <leader>ise :YcmShowDetailedDiagnostic<CR>
+let g:ycm_key_detailed_diagnostics = '<leader>ise'
 " ... [t]ype
 nnoremap <leader>ist :YcmCompleter GetType<CR>
 " ... [d]oc
 nnoremap <leader>isd :YcmCompleter GetDoc<CR>
+" ... [a]ll [d]iagnostics
+nnoremap <leader>isad :YcmDiags<CR>
 
 " THink [i]de [g]oto ...
 " ... [d]efinition
