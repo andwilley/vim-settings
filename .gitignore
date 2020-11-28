@@ -2,3 +2,4 @@
 local/sessions/*
 bundle/*
 !bundle/Vundle.vim
+pack/
