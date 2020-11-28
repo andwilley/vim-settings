@@ -150,6 +150,17 @@ if filereadable(expand("~/.vim/pack/vimspector/opt/vimspector/install_gadget.py"
   VimspectorInstall
 endif
 
+func! CustomiseUI()
+  call win_gotoid( g:vimspector_session_windows.code )
+  " Clear the existing WinBar created by Vimspector
+  nunmenu WinBar
+endfunction
+
+augroup MyVimspectorUICustomistaion
+  autocmd!
+  autocmd User VimspectorUICreated call CustomiseUI()
+augroup END
+
 " Tell YCM where to find the plugin. Add to any existing values.
 let g:ycm_java_jdtls_extension_path = [
   \ expand('~/.vim/pack/vimspector/opt/vimspector/gadgets/linux')
