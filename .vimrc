@@ -147,6 +147,11 @@ if filereadable(expand("~/.vim/pack/vimspector/opt/vimspector/install_gadget.py"
   VimspectorInstall
 endif
 
+" Tell YCM where to find the plugin. Add to any existing values.
+let g:ycm_java_jdtls_extension_path = [
+  \ expand('~/.vim/pack/vimspector/opt/vimspector/gadgets/linux')
+  \ ]
+
 " airline
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1

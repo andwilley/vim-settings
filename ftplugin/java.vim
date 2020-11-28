@@ -1,8 +1,3 @@
-" Tell YCM where to find the plugin. Add to any existing values.
-let g:ycm_java_jdtls_extension_path = [
-  \ '/home/rafiki/.vim/pack/vimspector/opt/vimspector/gadgets/linux'
-  \ ]
-
 let s:jdt_ls_debugger_port = 0
 function! s:StartDebugging()
   echom expand( '<sfile>:p:h:h:h:h:h'  ) . '/gadgets/linux'
