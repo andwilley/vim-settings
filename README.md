@@ -40,7 +40,7 @@ Remove the `Plugin...` line from vimrc, then
 
 ## Add Vimspector
 
-Wget the [lastest release](https://github.com/puremourning/vimspector/releases) and untar it `~/.vim/pack/`.
+run `:VimspectorInstall` to install plugins (js/ts/java)
 
 ## Minimum Requirements (mostly YCM & vimspector)
 
