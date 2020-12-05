@@ -7,7 +7,7 @@
         "protocol": "auto",
         "port": "${NODE_DEBUG_PORT}",
         "stopOnEntry": true,
-        "console": "integratedTerminal",
+        "console": "internalConsole",
         "cwd": "${workspaceRoot}"
       }
     }
