@@ -119,9 +119,6 @@ else
   let g:ale_fix_on_save = 0
 
   " ACK
-  let g:ack_use_cword_for_empty_search = 1
-  let g:ack_default_options = " --smart-case"
-
   " Maps <leader>/ so we're ready to type the search keyword.
   " This is mapped differently for goog env.
   nnoremap <Leader>/ :Ack!<Space>
@@ -136,6 +133,10 @@ else
   " disable ALE for Java outside of goog (ycm is better)
   let g:ale_linters = {'java': []}
 endif
+
+" ACK
+let g:ack_use_cword_for_empty_search = 1
+let g:ack_default_options = " --smart-case"
 
 " ALE
 let g:ale_lint_on_text_changed = 0
