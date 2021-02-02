@@ -65,6 +65,8 @@ let g:netrw_liststyle=3
 " special syntax cases
 autocmd BufNewFile,BufRead *.bash* set syntax=bash
 autocmd BufNewFile,BufRead *.soy set syntax=soy
+autocmd BufNewFile,BufRead *.proto set syntax=proto
+autocmd BufNewFile,BufRead *.textproto set syntax=textproto
 
 " drew's plugins
 filetype off
