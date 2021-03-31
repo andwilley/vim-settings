@@ -267,6 +267,8 @@ nnoremap <leader>sc :let @+=TrimPath(expand('%:p'))<CR>:echom "file path copied 
 nnoremap <leader>sp :let @+=TrimPath(expand('%:p'))<CR>:e <C-R>%
 " open the BUILD file in the same directory as this file
 nnoremap <leader>sb :exec 'e ' . ReplaceWithBuild(TrimPath(expand('%:p')))<CR>
+" search in buffers, populate qf list
+nnoremap <leader>/b :call setqflist([])<CR>:bufdo vimgrepadd  %<left><left>
 
 vnoremap <tab> %
 vnoremap / /\v
