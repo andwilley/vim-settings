@@ -188,6 +188,7 @@ nnoremap <leader>nf :NERDTreeFind<CR>
 " YCM
 set completeopt-=preview
 let g:ycm_max_diagnostics_to_display = 0
+let g:ycm_key_invoke_completion = '<leader>.'
 
 " Think [i]de [s]how ...
 " ... [e]xpand
@@ -198,12 +199,12 @@ nnoremap <leader>ist :YcmCompleter GetType<CR>
 nnoremap <leader>isd :YcmCompleter GetDoc<CR>
 " ... [a]ll [d]iagnostics
 nnoremap <leader>isad :YcmDiags<CR>
+" ... [r]eferences
+nnoremap <leader>isr :YcmCompleter GoToReferences<CR>
 
-" THink [i]de [g]oto ...
+" Think [i]de [g]oto ...
 " ... [d]efinition
 nnoremap <leader>igd :YcmCompleter GoToDefinition<CR>
-" ... [r]eferences
-nnoremap <leader>igr :YcmCompleter GoToReferences<CR>
 
 " Think [i]de [c]hange ...
 " ... [f]ix
