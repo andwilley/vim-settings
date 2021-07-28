@@ -203,8 +203,10 @@ nnoremap <leader>isad :YcmDiags<CR>
 nnoremap <leader>isr :YcmCompleter GoToReferences<CR>
 
 " Think [i]de [g]oto ...
-" ... [d]efinition
-nnoremap <leader>igd :YcmCompleter GoToDefinition<CR>
+" ... [def]inition
+nnoremap <leader>igdef :YcmCompleter GoToDefinition<CR>
+" ... [dec]laration
+nnoremap <leader>igdec :YcmCompleter GoToDeclaration<CR>
 
 " Think [i]de [c]hange ...
 " ... [f]ix
