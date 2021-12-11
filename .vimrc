@@ -89,11 +89,9 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'jalvesaq/Nvim-R'
 Plugin 'dense-analysis/ale'
 Plugin 'mileszs/ack.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'puremourning/vimspector'
 " add these if not in goog env
 if !filereadable(expand("~/.goog/goog.vim"))
   Plugin 'ycm-core/YouCompleteMe'
