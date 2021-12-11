@@ -144,37 +144,6 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 
-" Vimspector
-let g:vimspector_base_dir = expand('~/.vim/vimspector')
-
-let g:vimspector_install_gadgets = [ 'java-debug-adpter', 'vscode-java-debug', 'vscode-node-debug2' ]
-
-func! CustomiseUI()
-  call win_gotoid( g:vimspector_session_windows.code )
-  " Clear the existing WinBar created by Vimspector
-  nunmenu WinBar
-endfunction
-
-augroup MyVimspectorUICustomistaion
-  autocmd!
-  autocmd User VimspectorUICreated call CustomiseUI()
-augroup END
-
-" Tell YCM where to find the plugin. Add to any existing values.
-let g:ycm_java_jdtls_extension_path = [
-  \ g:vimspector_base_dir . '/gadgets/linux'
-  \ ]
-
-nnoremap <leader>dl :call vimspector#Launch()<CR>
-nnoremap <leader>dq :VimspectorReset<CR>
-nnoremap <leader>dc :call vimspector#Continue()<CR>
-nnoremap <leader>db :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <leader>dso :call vimspector#StepOver()<CR>
-" [s]tep [d]own (into)
-nnoremap <leader>dsd :call vimspector#StepInto()<CR>
-" [s]tep [u]p (out)
-nnoremap <leader>dsu :call vimspector#StepOut()<CR>
-
 " airline
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 1
