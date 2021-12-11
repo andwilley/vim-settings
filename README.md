@@ -3,8 +3,8 @@
 ## Importing
 
 ```bash
-git clone --recrusive https://github.com/andwilley/vim-settings.git ~/.vim && \
-cp ~/.vim/.vimrc ~/.vimrc
+git clone --recursive https://github.com/andwilley/vim-settings.git ~/.vim && \
+ln -s ~/.vim/.vimrc ~/.vimrc
 ```
 
 If you forget to run --recursive:
