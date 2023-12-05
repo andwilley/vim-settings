@@ -28,7 +28,7 @@ set listchars=tab:▷\ ,extends:»,precedes:«,trail:•
 set list
 
 " list of files with 100 max cols (filetype must be detected, duh)
-let long_files = ['soy', 'css', 'gss', 'scss', 'sql', 'java', 'kotlin']
+let long_files = ['soy', 'css', 'gss', 'scss', 'sql', 'java', 'kotlin', 'spansdl', 'bzl']
 
 " file search
 set path+=**
@@ -289,11 +289,13 @@ fun! MyHighlights() abort
 endfun
 
 " change matched col base on filetype
-fun! SetMatchedCol(filetype, long_files)
+fun! SetColWidthSettings(filetype, long_files)
   if index(a:long_files, a:filetype) >= 0
     match OverLength /\%101v/
+    set textwidth=100
   else
     match OverLength /\%81v/
+    set textwidth=80
   endif
 endfun
 
@@ -303,7 +305,7 @@ augroup MyColors
     autocmd ColorScheme * call MyHighlights()
 augroup END
 
-autocmd BufEnter * call SetMatchedCol(&filetype, long_files)
+autocmd BufEnter * call SetColWidthSettings(&filetype, long_files)
 
 "  theme
 set background=light
